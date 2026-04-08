@@ -411,17 +411,23 @@ footer{
 function sendToWhatsApp() {
     var name = document.getElementById("name").value;
     var mobile = document.getElementById("mobile").value;
+    var yatra = document.getElementById("yatra").value;
     var message = document.getElementById("message").value;
 
-    // VALIDATION
     if(mobile.length !== 10){
         alert("Please enter valid 10 digit mobile number");
+        return;
+    }
+
+    if(yatra === ""){
+        alert("Please select a yatra");
         return;
     }
 
     var url = "https://wa.me/919904388056?text="
         + "Name: " + encodeURIComponent(name) + "%0a"
         + "Mobile: " + encodeURIComponent(mobile) + "%0a"
+        + "Yatra: " + encodeURIComponent(yatra) + "%0a"
         + "Message: " + encodeURIComponent(message);
 
     window.open(url, '_blank');
