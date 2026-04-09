@@ -1,109 +1,232 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Himalay na Char dham</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himalay Na Char Dham</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
 
-    body {
-      overflow: hidden;
-    }
+body {
+  background: #000;
+  color: white;
+}
 
-    .image-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+/* LAYOUT */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
 
-    /* 🔥 FULL BACKGROUND BLUR */
-    .image-container::before {
-      content: "";
-      position: absolute;
-      inset: -50px; /* edges blur cut na ho */
-      background: url('kedarnath 2026 7.jpg') center/cover no-repeat;
-      filter: blur(60px) brightness(0.6);
-      z-index: 0;
-    }
+/* LEFT */
+.left {
+  flex: 1;
+  position: relative;
+}
 
-    /* 🔴 RED LIGHT EFFECT */
-    .image-container::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, 
-        rgba(255,0,0,0.3), 
-        rgba(0,0,0,0.7)
-      );
-      z-index: 1;
-    }
+.left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('amarnath20262.jpg') center/cover no-repeat;
+  filter: blur(35px) brightness(0.5);
+}
 
-    /* 🔥 MAIN IMAGE (RESPONSIVE) */
-    .main-img {
-      position: relative;
-      z-index: 2;
-      max-width: 95%;
-      max-height: 95%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 0 50px rgba(255,0,0,0.4);
-    }
+.left img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
 
-    /* 📱 MOBILE FIX */
-    @media (max-width: 768px) {
-      .main-img {
-        max-width: 100%;
-        max-height: 80%;
-      }
-    }
+/* RIGHT */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    /* 💬 WhatsApp Button */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 12px 18px;
-      background: #25D366;
-      color: white;
-      font-size: 14px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      z-index: 3;
-    }
+.form-box {
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 50px rgba(255,0,0,0.3);
+}
 
-    .whatsapp-btn:hover {
-      background: #1ebd5a;
-    }
-  </style>
+/* INPUT */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* REGISTER BUTTON */
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(45deg,#ff0000,#ff4d4d);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 🔥 WHATSAPP BUTTON */
+.whatsapp-btn {
+  display: none;
+  margin-top: 15px;
+  padding: 14px;
+  text-align: center;
+  border-radius: 30px;
+  background: linear-gradient(45deg,#25D366,#1ebd5a);
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #25D366;
+}
+
+/* LOADER */
+.loader {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.loader span {
+  width: 8px;
+  height: 8px;
+  background: red;
+  display: inline-block;
+  margin: 3px;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .container { flex-direction: column; }
+  .left { height: 40vh; }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="image-container">
-    <!-- ✅ SAME IMAGE USE KARO -->
-    <img src="kedarnath 2026 7.jpg" class="main-img">
-  </div>
+<div class="container">
 
-  <a class="whatsapp-btn"
-     href="https://wa.me/919904388056?text=Hello%20bhai%20mujhe%20info%20chahiye"
-     target="_blank">
-     WhatsApp
-  </a>
+<div class="left">
+  <img src="amarnath20262.jpg">
+</div>
+
+<div class="right">
+<div class="form-box">
+
+<h2 style="text-align:center;color:#ff4d4d;">Registration</h2>
+
+<input type="text" id="name" placeholder="Your Name">
+<input type="tel" id="mobile" placeholder="Mobile Number"
+maxlength="10"
+oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+
+<textarea id="message" placeholder="Message"></textarea>
+
+<button onclick="prepareForm()">Register Now</button>
+
+<div class="loader" id="loader">
+  <span></span><span></span><span></span>
+</div>
+
+<!-- ✅ WHATSAPP BUTTON -->
+<div class="whatsapp-btn" id="whatsappBtn" onclick="sendWhatsApp()">
+  Send to WhatsApp
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+let finalText = "";
+
+function prepareForm(){
+
+let name = document.getElementById("name").value.trim();
+let mobile = document.getElementById("mobile").value.trim();
+let message = document.getElementById("message").value.trim();
+
+let pattern = /^[0-9]{10}$/;
+
+if(name=="" || mobile==""){
+  alert("Fill all required fields");
+  return;
+}
+
+if(!pattern.test(mobile)){
+  alert("Enter valid 10 digit number");
+  return;
+}
+
+// 🔥 SHOW LOADER
+document.getElementById("loader").style.display="block";
+
+// ⏳ DELAY
+setTimeout(function(){
+
+finalText = "New Registration:%0A"
++ "Name: " + name + "%0A"
++ "Mobile: " + mobile + "%0A"
++ "Message: " + message;
+
+// SHOW WHATSAPP BUTTON
+document.getElementById("loader").style.display="none";
+document.getElementById("whatsappBtn").style.display="block";
+
+},1000);
+}
+
+function sendWhatsApp(){
+
+let url = "https://wa.me/919904388056?text=" + finalText;
+
+window.open(url,"_blank");
+
+// 🔥 REDIRECT
+setTimeout(()=>{
+  window.location.replace("index.html");
+},2000);
+
+}
+
+</script>
 
 </body>
 </html>
