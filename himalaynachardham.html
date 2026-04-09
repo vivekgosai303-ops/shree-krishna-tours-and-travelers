@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himalay Na Char Dham</title>
+<title>Goa Trip</title>
 
 <style>
 * {
@@ -14,135 +13,162 @@
   font-family: Arial;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   background: #000;
   color: white;
 }
 
-/* LAYOUT */
-.container {
-  display: flex;
-  min-height: 100vh;
+/* HEADER */
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  z-index:1000;
+}
+
+.logo img{ width:50px; }
+
+nav a{
+  color:#ff5a00;
+  margin-left:25px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* MAIN */
+.container{
+  display:flex;
+  min-height:100vh;
+  margin-top:80px;
 }
 
 /* LEFT */
-.left {
-  flex: 1;
-  position: relative;
+.left{ flex:1; position:relative; }
+
+.left::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('goa.jpg') center/cover no-repeat;
+  filter:blur(35px) brightness(0.5);
 }
 
-.left::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('kedarnath 2026 7.jpg') center/cover no-repeat;
-  filter: blur(35px) brightness(0.5);
-}
-
-.left img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  padding: 20px;
+.left img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  position:relative;
+  z-index:2;
+  padding:20px;
 }
 
 /* RIGHT */
-.right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.form-box {
-  width: 90%;
-  max-width: 400px;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 0 50px rgba(255,0,0,0.3);
+.form-box{
+  width:90%;
+  max-width:400px;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  box-shadow:0 0 50px rgba(255,0,0,0.3);
 }
 
-/* INPUT */
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,0.1);
+  color:white;
 }
 
-/* REGISTER BUTTON */
-button {
-  width: 100%;
-  padding: 14px;
-  border-radius: 30px;
-  border: none;
-  background: linear-gradient(45deg,#ff0000,#ff4d4d);
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-/* 🔥 WHATSAPP BUTTON */
-.whatsapp-btn {
-  display: none;
-  margin-top: 15px;
-  padding: 14px;
-  text-align: center;
-  border-radius: 30px;
-  background: linear-gradient(45deg,#25D366,#1ebd5a);
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.whatsapp-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #25D366;
+button{
+  width:100%;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  background:linear-gradient(45deg,#ff0000,#ff4d4d);
+  color:white;
+  cursor:pointer;
 }
 
 /* LOADER */
-.loader {
-  display: none;
-  text-align: center;
-  margin-top: 10px;
+.loader{
+  display:none;
+  text-align:center;
+  margin-top:10px;
 }
 
-.loader span {
-  width: 8px;
-  height: 8px;
-  background: red;
-  display: inline-block;
-  margin: 3px;
-  border-radius: 50%;
-  animation: bounce 0.6s infinite alternate;
+.loader span{
+  width:10px;
+  height:10px;
+  background:red;
+  margin:3px;
+  display:inline-block;
+  border-radius:50%;
+  animation:bounce 0.6s infinite alternate;
 }
 
-@keyframes bounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-8px); }
+@keyframes bounce{
+  from{transform:translateY(0);}
+  to{transform:translateY(-10px);}
+}
+
+/* SUCCESS */
+.success{
+  display:none;
+  text-align:center;
+  color:#25D366;
+  margin-top:10px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .container { flex-direction: column; }
-  .left { height: 40vh; }
+  .container{ flex-direction:column; }
+  .left{ height:40vh; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
+  <div class="logo">
+    <img src="krishna copy png.png">
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#tours">Tours</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="#register">Register</a>
+  </nav>
+</header>
+
+<div class="container" id="register">
 
 <div class="left">
-  <img src="kedarnath 2026 7.jpg">
+  <img src="goa.jpg">
 </div>
 
 <div class="right">
@@ -150,22 +176,28 @@ button {
 
 <h2 style="text-align:center;color:#ff4d4d;">Registration</h2>
 
-<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="number" id="age" placeholder="Age" required>
+
+<input type="text" id="city" placeholder="City" required>
+
+<input type="text" id="aadhar" placeholder="Aadhaar Number"
+maxlength="12"
+oninput="this.value=this.value.replace(/[^0-9]/g,'')" required>
+
 <input type="tel" id="mobile" placeholder="Mobile Number"
 maxlength="10"
-oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+oninput="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
-<textarea id="message" placeholder="Message"></textarea>
-
-<button onclick="prepareForm()">Register Now</button>
+<button onclick="submitForm()">Register Now</button>
 
 <div class="loader" id="loader">
   <span></span><span></span><span></span>
 </div>
 
-<!-- ✅ WHATSAPP BUTTON -->
-<div class="whatsapp-btn" id="whatsappBtn" onclick="sendWhatsApp()">
-  Send to WhatsApp
+<div class="success" id="success">
+  ✔ Submitted Successfully
 </div>
 
 </div>
@@ -174,58 +206,54 @@ oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 </div>
 
 <script>
-
-let finalText = "";
-
-function prepareForm(){
+function submitForm(){
 
 let name = document.getElementById("name").value.trim();
+let age = document.getElementById("age").value.trim();
+let city = document.getElementById("city").value.trim();
+let aadhar = document.getElementById("aadhar").value.trim();
 let mobile = document.getElementById("mobile").value.trim();
-let message = document.getElementById("message").value.trim();
 
-let pattern = /^[0-9]{10}$/;
-
-if(name=="" || mobile==""){
-  alert("Fill all required fields");
+if(!name || !age || !city || !aadhar || !mobile){
+  alert("All fields are required");
   return;
 }
 
-if(!pattern.test(mobile)){
-  alert("Enter valid 10 digit number");
+if(aadhar.length !== 12){
+  alert("Aadhaar must be 12 digits");
   return;
 }
 
-// 🔥 SHOW LOADER
+if(mobile.length !== 10){
+  alert("Mobile must be 10 digits");
+  return;
+}
+
 document.getElementById("loader").style.display="block";
 
-// ⏳ DELAY
 setTimeout(function(){
 
-finalText = "New Registration:%0A"
+let text = "New Registration:%0A"
 + "Name: " + name + "%0A"
-+ "Mobile: " + mobile + "%0A"
-+ "Message: " + message;
++ "Age: " + age + "%0A"
++ "City: " + city + "%0A"
++ "Aadhaar: " + aadhar + "%0A"
++ "Mobile: " + mobile;
 
-// SHOW WHATSAPP BUTTON
-document.getElementById("loader").style.display="none";
-document.getElementById("whatsappBtn").style.display="block";
-
-},1000);
-}
-
-function sendWhatsApp(){
-
-let url = "https://wa.me/919904388056?text=" + finalText;
+let url = "https://wa.me/919904388056?text=" + text;
 
 window.open(url,"_blank");
 
-// 🔥 REDIRECT
+document.getElementById("loader").style.display="none";
+document.getElementById("success").style.display="block";
+
 setTimeout(()=>{
   window.location.replace("index.html");
 },2000);
 
-}
+},1500);
 
+}
 </script>
 
 </body>
